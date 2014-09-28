@@ -1,8 +1,8 @@
 <?php
 class SimpleZabbixApi {
 
-	private $apiUrl = "";
-	private $authToken = "";
+	private $apiUrl = '';
+	private $authToken = '';
 
 	function __construct($apiUrl, $username, $password) {
 		$this->apiUrl = $apiUrl;	
@@ -10,7 +10,7 @@ class SimpleZabbixApi {
 	}
 
 	function isConnected() {
-		return ($this->authToken != "");
+		return ($this->authToken != '');
 	}
 
 	function jsonRequest($data) {
@@ -36,7 +36,7 @@ class SimpleZabbixApi {
 			'id' => '2'
 		);
 
-		if ($this->authToken != "") {
+		if ($this->authToken != '') {
 			$data['auth'] = $this->authToken;
 		}
 		return $this->jsonRequest($data);
@@ -54,9 +54,9 @@ class SimpleZabbixApi {
 			);
 		}
 
-		$result = $this->request("user.login", $login_params);
+		$result = $this->request('user.login', $login_params);
 
-		if (isset($result['result']) and $result['result'] != "") {
+		if (isset($result['result']) and $result['result'] != '') {
 			$this->authToken = $result['result'];
 			return true;
 		} else {
@@ -66,14 +66,14 @@ class SimpleZabbixApi {
 	
 	function getItemLastValue($host, $keyname, $key) {
 		$params = array(
-			"output"=> "extend",
-			"filter"=> array(
+			'output' => 'extend',
+			'filter' => array(
 				$keyname => $key
 			),
-			"host"=> $host
+			'host' => $host
 		);
 	
-		$result = $this->request("item.get", $params);
+		$result = $this->request('item.get', $params);
 	
 		if (isset($result['result']) and count($result['result']) == 1) {
 			return $result['result'][0]['lastvalue'];
@@ -84,13 +84,13 @@ class SimpleZabbixApi {
 
 	function getHostId($host) {
 		$params = array(
-			"filter"=> array(
+			'filter'=> array(
 				'limit' => 1
 			),
-			"host"=> $host
+			'host'=> $host
 		);
 
-		$result = $this->request("item.get", $params);
+		$result = $this->request('item.get', $params);
 
 		if (isset($result['result']) and count($result['result']) > 0) {
 			return $result['result'][0]['hostid'];
@@ -101,16 +101,16 @@ class SimpleZabbixApi {
 
 	function getGraphId($host, $keyname, $key) {
 		$params = array(
-			"output"=> "extend",
-			"filter"=> array(
+			'output'=> 'extend',
+			'filter'=> array(
 				$keyname => $key
 			),
-			"hostids"=> array(
+			'hostids'=> array(
 				$this->getHostId($host)
 			)
 		);
 
-		$result = $this->request("graph.get", $params);
+		$result = $this->request('graph.get', $params);
 	
 		if (isset($result['result']) and count($result['result']) == 1) {
 			return $result['result'][0]['graphid'];
