@@ -22,7 +22,7 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 						$graph = $link->overliburl[$k];
 
 						if (count($graph) == 1) {
-							if(preg_match('/^overliburl:([-a-zA-Z0-9_\.\/]+):([-a-zA-Z0-9_\.\/]+)$/', $graph[0], $matches))
+							if(preg_match('/^zabbix:([-a-zA-Z0-9_\.\/]+):([-a-zA-Z0-9_\.\/]+)$/', $graph[0], $matches))
 							{
 								$host = $matches[1];
 								$key = $matches[2];
