@@ -14,7 +14,6 @@ class SimpleZabbixApi {
 	}
 
 	function jsonRequest($data) {
-
 		$jsonData = json_encode($data);	
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->apiUrl);

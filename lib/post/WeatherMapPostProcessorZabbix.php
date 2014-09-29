@@ -27,7 +27,7 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 								$host = $matches[1];
 								$key = $matches[2];
 
-								debug ("Zabbix ReadData: Found (".$host.",".$key.")\n");
+								wm_debug ("Zabbix ReadData: Found (".$host.",".$key.")\n");
 
 								$graphId = $this->zabbixApi->getGraphId($host, $keyname, $key);
 								if (isset($graphId)) {

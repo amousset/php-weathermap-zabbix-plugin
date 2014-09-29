@@ -47,6 +47,8 @@ To configure a graph, use the following syntax:
 OVERLIBGRAPH overliburl:hostname:graph_name
 ```
 
+For example:
+
 ```
 OVERLIBGRAPH overliburl:switch-01:GigabitEthernet3/8
 ```
