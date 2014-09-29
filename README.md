@@ -38,14 +38,14 @@ TARGET zabbix:switch-01:GigabitEthernet3/8-IN:GigabitEthernet3/8-OUT
 You have to configure the following parameters in yoour weathermap file:
 
 * `SET post_zabbix_graphs 1` : Enable the Zabbix integration for overlib graphs, using a specific `OVERLIBGRAPH` syntax.
-* `SET post_zabbix_graph_links 1` : Enable the links to the graph page in Zabbix, overriding the `INFOURL` of links configured with a Zabbix graph.
+* `SET post_zabbix_graph_links 1` : Enable the links to the graph page in Zabbix, overriding the `INFOURL` links with link to a Zabbix graph.
 * `SET post_zabbix_graph_base_url https://zabbix/zabbix` : The URL to the Zabbix frontend used to generate the graphs links.
 * `SET post_zabbix_key name` : The attributes you want to use to select graphs in the configuration. `name` refers to the graph name configured in Zabbix.
 * `SET post_zabbix_graph_width 420` : The graphs width in pixels,, use `OVERLIBWIDTH` with the same value to improve the positionning of the popup image.
 * `SET post_zabbix_graph_height 150` : The graph height in pixels, use `OVERLIBHEIGHT` with the same value to improve the positionning of the popup image.
 * `SET post_zabbix_graph_period 86400` : The graph period in seconds.
 
-To configure a graph, use the following syntax:
+To configure a graph, use the following `OVERLIBGRAPH` syntax:
 
 ```
 OVERLIBGRAPH zabbix:hostname:graph_name
@@ -56,6 +56,15 @@ For example:
 ```
 OVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8
 ```
+
+It can also be used with `INOVERLIBGRAPH` and `OUTOVERLIBGRAPH`:
+
+```
+INOVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8-IN
+OUTOVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8-OUT
+```
+
+The generated `INFOURL` will be a link to the configured graph in your Zabbix frontend.
 
 ## TODO
 
