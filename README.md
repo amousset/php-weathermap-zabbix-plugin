@@ -18,23 +18,31 @@ Copy the content of the `lib` folder into the `lib` folder of your PHP Weatherma
 
 You have to configure the following parameters in your weathermap file global settings:
 
-#### `SET zabbix_user username`
+---
+
+`SET zabbix_user username`
 
 Zabbix username you want to connect with.
 
-#### `SET zabbix_password password`
+---
+
+`SET zabbix_password password`
 
 Zabbix password for the given user, you can connect with a `guest` account by ommitting this parameter.
 
-#### `SET zabbix_url http://zabbix/zabbix/api_jsonrpc.php`
+---
+
+`SET zabbix_url http://zabbix/zabbix/api_jsonrpc.php`
 
 The Zabbix API URL used to make requests.
 
-#### `SET zabbix_key name`
+---
+
+`SET zabbix_key name`
 
 The attributes you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id.
 
-#### Usage
+---
 
 To configure a link, use the following `TARGET` syntax:
 
@@ -52,35 +60,49 @@ TARGET zabbix:switch-01:GigabitEthernet3/8-IN:GigabitEthernet3/8-OUT
 
 You have to configure the following parameters in yoour weathermap file:
 
-#### `SET post_zabbix_graphs 1`
+---
+
+`SET post_zabbix_graphs 1`
 
 Enable the Zabbix integration for overlib graphs, using a specific `OVERLIBGRAPH` syntax.
 
-#### `SET post_zabbix_graph_links 1`
+---
+
+`SET post_zabbix_graph_links 1`
 
 Enable the links to the graph page in Zabbix, overriding the `INFOURL` links with link to a Zabbix graph.
 
-#### `SET post_zabbix_graph_base_url https://zabbix/zabbix`
+---
+
+`SET post_zabbix_graph_base_url https://zabbix/zabbix`
 
 The URL to the Zabbix frontend used to generate the graphs links.
 
-#### `SET post_zabbix_key name`
+---
+
+`SET post_zabbix_key name`
 
 The attributes you want to use to select graphs in the configuration. `name` refers to the graph name configured in Zabbix, `graphid` to the graph id.
 
-#### `SET post_zabbix_graph_width 420`
+---
+
+`SET post_zabbix_graph_width 420`
 
 The graphs width in pixels,, use `OVERLIBWIDTH` with the same value to improve the positionning of the popup image.
 
-#### `SET post_zabbix_graph_height 150`
+---
+
+`SET post_zabbix_graph_height 150`
 
 The graph height in pixels, use `OVERLIBHEIGHT` with the same value to improve the positionning of the popup image.
 
-#### `SET post_zabbix_graph_period 86400`
+---
+
+`SET post_zabbix_graph_period 86400`
 
 The graph period in seconds.
 
-#### Usage
+---
 
 To configure a graph, use the following `OVERLIBGRAPH` syntax:
 
