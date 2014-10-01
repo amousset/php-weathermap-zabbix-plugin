@@ -45,8 +45,10 @@ class WeatherMapDataSource_zabbix extends WeatherMapDataSource {
 
 			wm_debug ("Zabbix ReadData: Found (".$host.",".$in.",".$out.")\n");
 
-			$in_value = $this->zabbixApi->getItemLastValue($host, $zabbix_key, $in);
-			$out_value = $this->zabbixApi->getItemLastValue($host, $zabbix_key, $out);
+			$in_value = $this->zabbixApi->getItemLastValue($host, $zabbix_key, $in)["lastvalue"];
+			$raw_out_value = $this->zabbixApi->getItemLastValue($host, $zabbix_key, $out);
+			$out_value = $raw_out_value["lastvalue"];
+			$data_time = $raw_out_value["lastclock"];
 
 			if (isset($in_value)) {
 				$data[IN] = $in_value;
@@ -54,8 +56,6 @@ class WeatherMapDataSource_zabbix extends WeatherMapDataSource {
 			if (isset($out_value)) {
 				$data[OUT] = $out_value;
 			}
-
-			$data_time = time();
 		}
 
 		wm_debug("Zabbix ReadData: Returning (".($data[IN]===null?'null':$data[IN]).",".($data[OUT]===null?'null':$data[IN]).",$data_time)\n");

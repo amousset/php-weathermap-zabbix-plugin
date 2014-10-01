@@ -75,7 +75,10 @@ class SimpleZabbixApi {
 		$result = $this->request('item.get', $params);
 	
 		if (isset($result['result']) and count($result['result']) == 1) {
-			return $result['result'][0]['lastvalue'];
+			return array(
+				"lastvalue" => $result['result'][0]['lastvalue'],
+				"lastclock" => $result['result'][0]['lastclock']
+			);
 		} else {
 			return null;
 		}
