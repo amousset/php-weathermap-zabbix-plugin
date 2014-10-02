@@ -38,22 +38,23 @@ The Zabbix API URL used to make requests.
 
 ---
 
-`SET zabbix_key name`
-
-The attributes you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id.
-
----
-
 To configure a link, use the following `TARGET` syntax:
 
 ```
-TARGET zabbix:hostname:input_item_name:output_item_name
+TARGET zabbix:keyname:hostname:input_item_name:output_item_name
 ```
+
+with:
+
+* `keyname`: The attribute you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id
+* `hostname`: The hostname of the host you want to used
+* `input_item_name`: the input item identifier (according to what you put as keyname)
+* `output_item_name`: the output item identifier (according to what you put as keyname)
 
 For example:
 
 ```
-TARGET zabbix:switch-01:GigabitEthernet3/8-IN:GigabitEthernet3/8-OUT
+TARGET zabbix:name:switch-01:GigabitEthernet3/8-IN:GigabitEthernet3/8-OUT
 ```
 
 ### Configuration of the Zabbix graphs integration
@@ -80,12 +81,6 @@ The URL to the Zabbix frontend used to generate the graphs links.
 
 ---
 
-`SET post_zabbix_key name`
-
-The attributes you want to use to select graphs in the configuration. `name` refers to the graph name configured in Zabbix, `graphid` to the graph id.
-
----
-
 `SET post_zabbix_graph_width 420`
 
 The graphs width in pixels,, use `OVERLIBWIDTH` with the same value to improve the positionning of the popup image.
@@ -109,6 +104,13 @@ To configure a graph, use the following `OVERLIBGRAPH` syntax, for nodes and lin
 ```
 OVERLIBGRAPH zabbix:hostname:graph_name
 ```
+
+with:
+
+* `keyname`: The attribute you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id
+* `hostname`: The hostname of the host you want to used
+* `input_item_name`: the input item identifier (according to what you put as keyname)
+* `output_item_name`: the output item identifier (according to what you put as keyname)
 
 For example:
 

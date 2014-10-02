@@ -10,7 +10,6 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 		{
 			$this->zabbixApi = new SimpleZabbixApi($map->get_hint('zabbix_url'), $map->get_hint('zabbix_user'), $map->get_hint('zabbix_password'));
 			if ($this->zabbixApi->isConnected()) {
-				$keyname = $map->get_hint('post_zabbix_key');
 				$baseUrl = $map->get_hint('post_zabbix_graph_base_url');
 				$addGraphLink = $map->get_hint('post_zabbix_graph_link');
 				$graphWidth = $map->get_hint('post_zabbix_graph_width');
@@ -22,10 +21,11 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 						$graph = $item->overliburl[$k];
 
 						if (count($graph) == 1) {
-							if(preg_match('/^zabbix:([-a-zA-Z0-9_\.\/]+):([-a-zA-Z0-9_\.\/]+)$/', $graph[0], $matches))
+							if(preg_match('/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+)$/', $graph[0], $matches))
 							{
-								$host = $matches[1];
-								$key = $matches[2];
+								$keyname = $matches[1];
+								$host = $matches[2];
+								$key = $matches[3];
 
 								wm_debug ("Zabbix ReadData: Found (".$host.",".$key.")\n");
 
