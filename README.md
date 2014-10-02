@@ -104,7 +104,7 @@ The graph period in seconds.
 
 ---
 
-To configure a graph, use the following `OVERLIBGRAPH` syntax:
+To configure a graph, use the following `OVERLIBGRAPH` syntax, for nodes and links:
 
 ```
 OVERLIBGRAPH zabbix:hostname:graph_name
@@ -116,7 +116,7 @@ For example:
 OVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8
 ```
 
-It can also be used with `INOVERLIBGRAPH` and `OUTOVERLIBGRAPH`:
+It can also be used with `INOVERLIBGRAPH` and `OUTOVERLIBGRAPH` (for links only):
 
 ```
 INOVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8-IN
@@ -128,7 +128,7 @@ The generated `INFOURL` will be a link to the configured graph in your Zabbix fr
 ## TODO
 
 * Improve the Zabbix API part or use an existing library
-* Add support for links and graphs on nodes, and maybe other link attributes
+* Add support for other link attributes
 
 ## License
 
