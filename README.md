@@ -109,8 +109,7 @@ with:
 
 * `keyname`: The attribute you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id
 * `hostname`: The hostname of the host you want to used
-* `input_item_name`: the input item identifier (according to what you put as keyname)
-* `output_item_name`: the output item identifier (according to what you put as keyname)
+* `graph_name`: the graph identifier (according to what you put as keyname)
 
 For example:
 
@@ -121,8 +120,8 @@ OVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8
 It can also be used with `INOVERLIBGRAPH` and `OUTOVERLIBGRAPH` (for links only):
 
 ```
-INOVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8-IN
-OUTOVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8-OUT
+INOVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8-IN
+OUTOVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8-OUT
 ```
 
 The generated `INFOURL` will be a link to the configured graph in your Zabbix frontend.
