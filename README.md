@@ -46,8 +46,11 @@ TARGET zabbix:keyname:hostname:input_item_name:output_item_name
 
 with:
 
-* `keyname`: The attribute you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id
-* `hostname`: The hostname of the host you want to used
+* `keyname`: the attribute you want to use to select items in the configuration, possible values:
+** `name` refers to the item name configured in Zabbix
+** `key_` refers to the key configured in Zabbix
+** `itemid` refers to the item id used by Zabbix
+* `hostname`: the hostname of the host you want to use
 * `input_item_name`: the input item identifier (according to what you put as keyname)
 * `output_item_name`: the output item identifier (according to what you put as keyname)
 
@@ -107,8 +110,10 @@ OVERLIBGRAPH zabbix:hostname:graph_name
 
 with:
 
-* `keyname`: The attribute you want to use to select items in the configuration. `name` refers to the item name configured in Zabbix, `key_` to the item key, `itemid` to the id
-* `hostname`: The hostname of the host you want to used
+* `keyname`: the attribute you want to use to select items in the configuration, possible values:
+** `name` refers to the graph name configured in Zabbix
+** `graphid` refers to the graph is used by Zabbix
+* `hostname`: the hostname of the host you want to use
 * `graph_name`: the graph identifier (according to what you put as keyname)
 
 For example:
