@@ -86,13 +86,13 @@ The URL to the Zabbix frontend used to generate the graphs links.
 
 `SET post_zabbix_graph_width 420`
 
-The graphs width in pixels,, use `OVERLIBWIDTH` with the same value to improve the positionning of the popup image.
+The graphs width in pixels, use `OVERLIBWIDTH` to improve the positionning of the popup image. This is the width of the actual graph, and the image will be larger.
 
 ---
 
 `SET post_zabbix_graph_height 150`
 
-The graph height in pixels, use `OVERLIBHEIGHT` with the same value to improve the positionning of the popup image.
+The graph height in pixels, use `OVERLIBHEIGHT` to improve the positionning of the popup image. This is the height of the actual graph, and the image will be larger.
 
 ---
 
