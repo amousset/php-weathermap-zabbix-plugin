@@ -84,36 +84,17 @@ class SimpleZabbixApi {
 		}
 	}
 
-	function getHostId($host) {
-		$params = array(
-			'filter'=> array(
-				'limit' => 1
-			),
-			'host'=> $host
-		);
-
-		$result = $this->request('item.get', $params);
-
-		if (isset($result['result']) and count($result['result']) > 0) {
-			return $result['result'][0]['hostid'];
-		} else {
-			return null;
-		}
-	}
-
 	function getGraphId($host, $keyname, $key) {
 		$params = array(
-			'output'=> 'extend',
+			'output'=> 'shorten',
 			'filter'=> array(
-				$keyname => $key
-			),
-			'hostids'=> array(
-				$this->getHostId($host)
+				$keyname => $key,
+				'host' => $host
 			)
 		);
 
 		$result = $this->request('graph.get', $params);
-	
+
 		if (isset($result['result']) and count($result['result']) == 1) {
 			return $result['result'][0]['graphid'];
 		} else {
