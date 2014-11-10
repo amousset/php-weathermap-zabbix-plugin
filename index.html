@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="PHP-weathermap Zabbix plugin : PHP Weathermap plugin for Zabbix (using Zabbix API)">
+    <meta name="description" content="PHP Weathermap Zabbix plugin : PHP Weathermap plugin integrating Zabbix data (through Zabbix API)">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>PHP-weathermap Zabbix plugin</title>
+    <title>PHP Weathermap Zabbix plugin</title>
   </head>
 
   <body>
@@ -18,8 +18,8 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/amousset/php-weathermap-zabbix-plugin">View on GitHub</a>
 
-          <h1 id="project_title">PHP-weathermap Zabbix plugin</h1>
-          <h2 id="project_tagline">PHP Weathermap plugin for Zabbix (using Zabbix API)</h2>
+          <h1 id="project_title">PHP Weathermap Zabbix plugin</h1>
+          <h2 id="project_tagline">PHP Weathermap plugin integrating Zabbix data (through Zabbix API)</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/amousset/php-weathermap-zabbix-plugin/zipball/master">Download this project as a .zip file</a>
@@ -166,8 +166,14 @@
 <ul>
 <li>
 <code>keyname</code>: the attribute you want to use to select items in the configuration, possible values:
-** <code>name</code> refers to the graph name configured in Zabbix
-** <code>graphid</code> refers to the graph is used by Zabbix</li>
+
+<ul>
+<li>
+<code>name</code> refers to the graph name configured in Zabbix</li>
+<li>
+<code>graphid</code> refers to the graph is used by Zabbix</li>
+</ul>
+</li>
 <li>
 <code>hostname</code>: the hostname of the host you want to use</li>
 <li>
@@ -192,7 +198,7 @@ OUTOVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8-OUT
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">PHP-weathermap Zabbix plugin maintained by <a href="https://github.com/amousset">amousset</a></p>
+        <p class="copyright">PHP Weathermap Zabbix plugin maintained by <a href="https://github.com/amousset">amousset</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
