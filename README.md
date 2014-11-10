@@ -111,8 +111,8 @@ OVERLIBGRAPH zabbix:hostname:graph_name
 with:
 
 * `keyname`: the attribute you want to use to select items in the configuration, possible values:
-** `name` refers to the graph name configured in Zabbix
-** `graphid` refers to the graph is used by Zabbix
+  * `name` refers to the graph name configured in Zabbix
+  * `graphid` refers to the graph is used by Zabbix
 * `hostname`: the hostname of the host you want to use
 * `graph_name`: the graph identifier (according to what you put as keyname)
 
