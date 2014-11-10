@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="PHP-weathermap Zabbix plugin : PHP Weathermap plugin for Zabbix (using Zabbix API)">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>PHP-weathermap Zabbix plugin</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/amousset/php-weathermap-zabbix-plugin">View on GitHub</a>
+
+          <h1 id="project_title">PHP-weathermap Zabbix plugin</h1>
+          <h2 id="project_tagline">PHP Weathermap plugin for Zabbix (using Zabbix API)</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/amousset/php-weathermap-zabbix-plugin/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/amousset/php-weathermap-zabbix-plugin/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="zabbix-plugin-for-php-network-weathermap" class="anchor" href="#zabbix-plugin-for-php-network-weathermap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zabbix plugin for PHP Network Weathermap</h1>
+
+<p>This plugin integrates the Zabbix monitoring tool into <a href="http://www.network-weathermap.com">PHP Weathermap</a>, using <a href="https://www.zabbix.com/documentation/2.0/manual/appendix/api/api">Zabbix JSON API</a>. It tends to provide the same functionnalities as the Cacti plugin : </p>
+
+<ul>
+<li>Bandwith data retrieving</li>
+<li>Integration of bandwith and host graph</li>
+<li>Easy configuration using the Zabbix names, accessed using Zabbix web API</li>
+</ul>
+
+<p><img src="https://wiki.minet.net/_media/wiki/monitoring/weathermap.png?w=600&amp;tok=91fcb0" alt="Example of graph integration"></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>The plugins requires:</p>
+
+<ul>
+<li>Zabbix &gt;= 2.0 (but it is probably easy to adapt it for older releases)</li>
+<li>PHP Network Weathermap &gt;= 0.97b (but it is easy to adapt it for older releases)</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Copy the content of the <code>lib</code> folder into the <code>lib</code> folder of your PHP Weathermap installation.</p>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a id="configuration-of-the-new-datasource-for-traffic" class="anchor" href="#configuration-of-the-new-datasource-for-traffic" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration of the new datasource for traffic</h3>
+
+<p>You have to configure the following parameters in your weathermap file global settings:</p>
+
+<hr>
+
+<p><code>SET zabbix_user username</code></p>
+
+<p>Zabbix username you want to connect with.</p>
+
+<hr>
+
+<p><code>SET zabbix_password password</code></p>
+
+<p>Zabbix password for the given user, you can connect with a <code>guest</code> account by ommitting this parameter.</p>
+
+<hr>
+
+<p><code>SET zabbix_url http://zabbix/zabbix/api_jsonrpc.php</code></p>
+
+<p>The Zabbix API URL used to make requests.</p>
+
+<hr>
+
+<p>To configure a link, use the following <code>TARGET</code> syntax:</p>
+
+<pre><code>TARGET zabbix:keyname:hostname:input_item_name:output_item_name
+</code></pre>
+
+<p>with:</p>
+
+<ul>
+<li>
+<code>keyname</code>: the attribute you want to use to select items in the configuration, possible values:
+** <code>name</code> refers to the item name configured in Zabbix
+** <code>key_</code> refers to the key configured in Zabbix
+** <code>itemid</code> refers to the item id used by Zabbix</li>
+<li>
+<code>hostname</code>: the hostname of the host you want to use</li>
+<li>
+<code>input_item_name</code>: the input item identifier (according to what you put as keyname)</li>
+<li>
+<code>output_item_name</code>: the output item identifier (according to what you put as keyname)</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code>TARGET zabbix:name:switch-01:GigabitEthernet3/8-IN:GigabitEthernet3/8-OUT
+</code></pre>
+
+<h3>
+<a id="configuration-of-the-zabbix-graphs-integration" class="anchor" href="#configuration-of-the-zabbix-graphs-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration of the Zabbix graphs integration</h3>
+
+<p>You have to configure the following parameters in yoour weathermap file:</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graphs 1</code></p>
+
+<p>Enable the Zabbix integration for overlib graphs, using a specific <code>OVERLIBGRAPH</code> syntax.</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graph_links 1</code></p>
+
+<p>Enable the links to the graph page in Zabbix, overriding the <code>INFOURL</code> links with link to a Zabbix graph.</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graph_base_url https://zabbix/zabbix</code></p>
+
+<p>The URL to the Zabbix frontend used to generate the graphs links.</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graph_width 420</code></p>
+
+<p>The graphs width in pixels, use <code>OVERLIBWIDTH</code> to improve the positionning of the popup image. This is the width of the actual graph, and the image will be larger.</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graph_height 150</code></p>
+
+<p>The graph height in pixels, use <code>OVERLIBHEIGHT</code> to improve the positionning of the popup image. This is the height of the actual graph, and the image will be larger.</p>
+
+<hr>
+
+<p><code>SET post_zabbix_graph_period 86400</code></p>
+
+<p>The graph period in seconds.</p>
+
+<hr>
+
+<p>To configure a graph, use the following <code>OVERLIBGRAPH</code> syntax, for nodes and links:</p>
+
+<pre><code>OVERLIBGRAPH zabbix:hostname:graph_name
+</code></pre>
+
+<p>with:</p>
+
+<ul>
+<li>
+<code>keyname</code>: the attribute you want to use to select items in the configuration, possible values:
+** <code>name</code> refers to the graph name configured in Zabbix
+** <code>graphid</code> refers to the graph is used by Zabbix</li>
+<li>
+<code>hostname</code>: the hostname of the host you want to use</li>
+<li>
+<code>graph_name</code>: the graph identifier (according to what you put as keyname)</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code>OVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8
+</code></pre>
+
+<p>It can also be used with <code>INOVERLIBGRAPH</code> and <code>OUTOVERLIBGRAPH</code> (for links only):</p>
+
+<pre><code>INOVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8-IN
+OUTOVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8-OUT
+</code></pre>
+
+<p>The generated <code>INFOURL</code> will be a link to the configured graph in your Zabbix frontend.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">PHP-weathermap Zabbix plugin maintained by <a href="https://github.com/amousset">amousset</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
