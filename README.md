@@ -47,9 +47,9 @@ TARGET zabbix:keyname:hostname:input_item_name:output_item_name
 with:
 
 * `keyname`: the attribute you want to use to select items in the configuration, possible values:
-** `name` refers to the item name configured in Zabbix
-** `key_` refers to the key configured in Zabbix
-** `itemid` refers to the item id used by Zabbix
+  * `name` refers to the item name configured in Zabbix
+  * `key_` refers to the key configured in Zabbix
+  * `itemid` refers to the item id used by Zabbix
 * `hostname`: the hostname of the host you want to use
 * `input_item_name`: the input item identifier (according to what you put as keyname)
 * `output_item_name`: the output item identifier (according to what you put as keyname)
