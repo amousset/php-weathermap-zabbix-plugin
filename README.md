@@ -72,7 +72,7 @@ Enable the Zabbix integration for overlib graphs, using a specific `OVERLIBGRAPH
 
 ---
 
-`SET post_zabbix_graph_links 1`
+`SET post_zabbix_graph_link 1`
 
 Enable the links to the graph page in Zabbix, overriding the `INFOURL` links with link to a Zabbix graph.
 
@@ -105,7 +105,7 @@ The graph period in seconds.
 To configure a graph, use the following `OVERLIBGRAPH` syntax, for nodes and links:
 
 ```
-OVERLIBGRAPH zabbix:hostname:graph_name
+OVERLIBGRAPH zabbix:keyname:hostname:graph_name
 ```
 
 with:
@@ -119,7 +119,7 @@ with:
 For example:
 
 ```
-OVERLIBGRAPH zabbix:switch-01:GigabitEthernet3/8
+OVERLIBGRAPH zabbix:name:switch-01:GigabitEthernet3/8
 ```
 
 It can also be used with `INOVERLIBGRAPH` and `OUTOVERLIBGRAPH` (for links only):
