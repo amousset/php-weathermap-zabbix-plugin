@@ -18,7 +18,7 @@ class WeatherMapDataSource_zabbix extends WeatherMapDataSource {
 
 	function Recognise($targetstring)
 	{
-		if(preg_match("/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+)$/", $targetstring, $matches))
+		if(preg_match("/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\],]+):([-a-zA-Z0-9_\.\/\[\],]+)$/", $targetstring, $matches))
 		{
 			return true;
 		}
@@ -34,7 +34,7 @@ class WeatherMapDataSource_zabbix extends WeatherMapDataSource {
 		$data[OUT] = null;
 		$data_time = 0;
 
-		if(preg_match("/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+)$/", $targetstring, $matches))
+		if(preg_match("/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\],]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\],]+)$/", $targetstring, $matches))
 		{
 			$zabbix_uri = $map->get_hint('zabbix_uri');
 
