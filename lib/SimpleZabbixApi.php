@@ -44,11 +44,11 @@ class SimpleZabbixApi {
 	function auth($username, $password) {
 		if (is_null($password)) {
 			$login_params = array(
-				'user' => $username
+				'username' => $username
 			);
 		} else {
 			$login_params = array(
-				'user' => $username,
+				'username' => $username,
 				'password' => $password
 			);
 		}
