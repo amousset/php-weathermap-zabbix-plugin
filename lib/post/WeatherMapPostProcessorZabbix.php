@@ -1,6 +1,6 @@
 <?php
 
-class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor 
+class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 {
 	function run(&$map)
 	{
@@ -17,11 +17,11 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 				$graphPeriod = $map->get_hint('post_zabbix_graph_period');
 
 				foreach (array_merge($map->links, $map->nodes) as $item) {
-					foreach (range(0, 1) as $k) {
+					foreach (range(0, 1) as $k) {    // IN and OUT, if necessary
 						$graph = $item->overliburl[$k];
 
-						if (count($graph) == 1) {
-							if(preg_match('/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+)$/', $graph[0], $matches))
+						foreach ($graph as $index=>$graphItem) {
+							if(preg_match('/^zabbix:([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+):([-a-zA-Z0-9_\.\/\[\]]+)$/', $graphItem, $matches))
 							{
 								$keyname = $matches[1];
 								$host = $matches[2];
@@ -31,10 +31,10 @@ class WeatherMapPostProcessorZabbix extends WeatherMapPostProcessor
 
 								$graphId = $this->zabbixApi->getGraphId($host, $keyname, $key);
 								if (isset($graphId)) {
-									if ($addGraphLink) { 
+									if ($addGraphLink) {
 										$item->infourl[$k] = $baseUrl.'/charts.php?form_refresh=1&fullscreen=0&graphid='.$graphId;
 									}
-									$item->overliburl[$k][0] = $baseUrl.'/chart2.php?width='.$graphWidth.'&height='.
+									$item->overliburl[$k][$index] = $baseUrl.'/chart2.php?width='.$graphWidth.'&height='.
 										$graphHeight.'&period='.$graphPeriod.'&stime=now&graphid='.$graphId;
 								}
 							}
