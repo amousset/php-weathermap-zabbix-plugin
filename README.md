@@ -5,7 +5,7 @@ This plugin integrates the Zabbix monitoring tool into [PHP Weathermap](http://w
 ## Requirements
 
 The plugins requires:
-* Zabbix >= 2.0 (but it is probably easy to adapt it for older releases)
+* Zabbix >= 5.2 (but it is probably easy to adapt it for older releases)
 * PHP Network Weathermap >= 0.97b (but it is easy to adapt it for older releases)
 
 ## Installation
